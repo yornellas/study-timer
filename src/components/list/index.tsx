@@ -1,4 +1,6 @@
+import { Item } from './item'
 import './styles.scss'
+
 
 function List() {
   const tasks =[
@@ -17,10 +19,11 @@ function List() {
       <h2>Estudos do dia</h2>
       <ul>
         {tasks.map((task, index) => (
-          <li key={index} className='item'>
-            <h3>{ task.name }</h3>
-            <span>{ task.time }</span>
-          </li>
+          <Item
+          key={ index }
+            name={ task.name }
+            time={ task.time }
+          />
         ))}
       </ul>
     </aside>
