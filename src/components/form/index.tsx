@@ -47,8 +47,9 @@ class Form extends React.Component {
             )}
           />
         </div>
-        <Button 
-          text="Adicionar"
+        <Button
+          text='Adicionar'
+          type='submit'
         />
       </form>
     )
