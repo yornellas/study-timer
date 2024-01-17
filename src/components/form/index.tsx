@@ -1,15 +1,17 @@
 import React from 'react'
 import Button from '../button'
 import './styles.scss'
+import { Task } from '../../interfaces'
 
-class Form extends React.Component {
-  state = {
-    task: '',
+class Form extends React.Component<{ setTask: React.Dispatch<React.SetStateAction<Task[]>> }> {
+  state: Task = {
+    name: '',
     time: '00:00'
   }
 
   addTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    this.props.setTask(oldTasks => [...oldTasks, { ...this.state }])
   }
 
   render() {
@@ -23,10 +25,10 @@ class Form extends React.Component {
             id='task'
             placeholder='O que você quer estudar?'
             required
-            value={ this.state.task }
+            value={ this.state.name }
             onChange={(event) =>
               this.setState(
-                { ...this.state, task: event.target.value }
+                { ...this.state, name: event.target.value }
               )
             }
             />
@@ -48,7 +50,7 @@ class Form extends React.Component {
           />
         </div>
         <Button
-          text='Adicionar'
+          text="Adicionar"
           type='submit'
         />
       </form>
