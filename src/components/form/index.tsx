@@ -12,6 +12,10 @@ class Form extends React.Component<{ setTask: React.Dispatch<React.SetStateActio
   addTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     this.props.setTask(oldTasks => [...oldTasks, { ...this.state }])
+    this.setState({
+      name: '',
+      time: '00:00'
+    })
   }
 
   render() {
