@@ -7,10 +7,10 @@ import { Task } from './interfaces'
 
 function App() {
   const [tasks, setTask] = useState<Task[]>([])
-  const [selected, setSelected] = useState<Task>()
+  const [selectedTask, setSelectedTask] = useState<Task>()
 
   function selectTask(selectedTask: Task) {
-    setSelected(selectedTask)
+    setSelectedTask(selectedTask)
     setTask((previousTasks) =>
       previousTasks.map((task) => ({
         ...task,
@@ -23,7 +23,7 @@ function App() {
     <div className={style.AppStyle}>
       <Form setTask={setTask} />
       <List tasks={tasks} selectTask={selectTask} />
-      <Timer />
+      <Timer selectedTask={selectedTask} />
     </div>
   )
 }
