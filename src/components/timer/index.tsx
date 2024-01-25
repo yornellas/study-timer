@@ -22,7 +22,7 @@ export function Timer({ selectedTask }: Props) {
         Escolha um card e inicie o cronômetro
       </p>
       <div className='clock-container'>
-        <Clock />
+        <Clock time={time} />
       </div>
       <Button text='Começar' />
     </div>
