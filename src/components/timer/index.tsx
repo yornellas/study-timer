@@ -7,9 +7,10 @@ import { timeToSeconds } from '../../utils/time'
 
 interface Props {
   selectedTask: Task | undefined
+  finalizeTask: () => void
 }
 
-export function Timer({ selectedTask }: Props) {
+export function Timer({ selectedTask, finalizeTask }: Props) {
   const [time, setTime] = useState<number>()
 
   useEffect(() => {
@@ -18,10 +19,12 @@ export function Timer({ selectedTask }: Props) {
 
   function countdown(number: number = 0) {
     setTimeout(() => {
-      if (number <= 0) return
+      if (number > 0) {
+        setTime(number - 1)
+        return countdown(number - 1)
+      }
 
-      setTime(number - 1)
-      return countdown(number - 1)
+      finalizeTask()
     }, 1000)
   }
 

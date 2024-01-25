@@ -8,11 +8,16 @@ interface Props extends Task {
 export function Item(props: Props) {
   return (
     <li
-      className={`item ${props.selected ? 'selectedItem' : ''}`}
-      onClick={() => props.selectTask(props)}
+      className={`item ${props.selected ? 'selectedItem' : ''} ${
+        props.completed ? 'completedItem' : ''
+      }`}
+      onClick={() => !props.completed && props.selectTask(props)}
     >
       <h3>{props.name}</h3>
       <span>{props.time}</span>
+      {props.completed && (
+        <span className={'done'} aria-label="Completed task."></span>
+      )}
     </li>
   )
 }
