@@ -17,14 +17,12 @@ export function Timer({ selectedTask }: Props) {
   }, [selectedTask])
 
   return (
-    <div className='timer'>
-      <p className='title'>
-        Escolha um card e inicie o cronômetro
-      </p>
-      <div className='clock-container'>
+    <div className="timer">
+      <p className="title">Escolha um card e inicie o cronômetro</p>
+      <div className="clock-container">
         <Clock time={time} />
       </div>
-      <Button text='Começar' />
+      <Button text="Começar" onClick={() => console.log('click')} />
     </div>
   )
 }

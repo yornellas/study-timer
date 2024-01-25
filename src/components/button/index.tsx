@@ -2,16 +2,22 @@ import React from 'react'
 import styles from './Button.module.scss'
 
 class Button extends React.Component<{
-  text: string, type?: 'submit' | 'reset' | 'button' | undefined
+  text: string
+  type?: 'submit' | 'reset' | 'button' | undefined
+  onClick?: () => void
 }> {
   static defaultProps = {
-    type: 'button'
+    type: 'button',
   }
 
   render() {
     return (
-    <button type={ this.props.type } className={styles.button}>
-        { this.props.text }
+      <button
+        type={this.props.type}
+        className={styles.button}
+        onClick={this.props.onClick}
+      >
+        {this.props.text}
       </button>
     )
   }
