@@ -16,13 +16,22 @@ export function Timer({ selectedTask }: Props) {
     if (selectedTask?.time) setTime(timeToSeconds(selectedTask.time))
   }, [selectedTask])
 
+  function countdown(number: number = 0) {
+    setTimeout(() => {
+      if (number <= 0) return
+
+      setTime(number - 1)
+      return countdown(number - 1)
+    }, 1000)
+  }
+
   return (
     <div className="timer">
       <p className="title">Escolha um card e inicie o cronômetro</p>
       <div className="clock-container">
         <Clock time={time} />
       </div>
-      <Button text="Começar" onClick={() => console.log('click')} />
+      <Button text="Começar" onClick={() => countdown(time)} />
     </div>
   )
 }
